@@ -35,9 +35,12 @@ const MovieForm = props => {
 
   const updateMovie = e => {
     e.preventDefault();
-    console.log(movie.stars);
-    let starArr = movie.stars.split(",");
-    starArr = starArr.map(star => star.trim());
+    console.log("moviestars", movie.stars);
+    let starArr = movie.stars;
+    if (typeof movie.stars === "string") {
+      starArr = movie.stars.split(",");
+      starArr = starArr.map(star => star.trim());
+    }
     console.log(starArr);
     let update = {
       ...movie,

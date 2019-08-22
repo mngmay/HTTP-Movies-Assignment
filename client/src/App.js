@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Route, NavLink } from "react-router-dom";
+import axios from "axios";
 import SavedList from "./Movies/SavedList";
 import MovieList from "./Movies/MovieList";
 import Movie from "./Movies/Movie";
@@ -11,6 +12,23 @@ const App = () => {
   const addToSavedList = movie => {
     setSavedList([...savedList, movie]);
   };
+
+  //use effect, forEach saved list, match ids,
+  const movies = axios.get("http://localhost:5000/api/movies");
+  useEffect(() => {
+    axios.get("http://localhost:5000/api/movies").then(res => {
+      res.data.forEach(movie => {
+        savedList.forEach(sMovie => {
+          if (movie.id === sMovie.id) {
+            const newSavedList = savedList.filter(
+              savedMovie => savedMovie !== sMovie
+            );
+            setSavedList([...newSavedList, movie]);
+          }
+        });
+      });
+    });
+  }, [movies]);
 
   return (
     <>
