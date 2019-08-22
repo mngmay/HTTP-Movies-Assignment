@@ -5,6 +5,10 @@ body {
   background-color: #f2f2f2;
 }
 
+.App {
+  display: flex;
+  flex-direction: column;
+}
 .movie-card {
   background-color: #fff;
   border: 0;
@@ -53,36 +57,39 @@ body {
   width: 75%;
   margin: 1rem auto;
 }
-.save-button {
+
+button,
+.add-movie-btn {
+  outline: none;
+  font-size: 1rem;
   position: absolute;
-  top: 25px;
-  right: 25px;
   border: 1px solid grey;
   padding: 5px 10px;
   background-color: lightseagreen;
+  width: 75px;
+}
+
+.add-movie-btn {
+  text-decoration: none;
+  text-align: center;
+  width: 90px;
+}
+.save-button {
+  top: 25px;
+  right: 25px;
 }
 
 .update-button {
-  position: absolute;
-  top: 25px;
-  right: 100px;
-  border: 1px solid grey;
-  padding: 5px 10px;
-  background-color: lightseagreen;
+  top: 75px;
+  right: 25px;
 }
 
 .delete-button {
-  position: absolute;
-  top: 25px;
-  right: 195px;
-  border: 1px solid grey;
-  padding: 5px 10px;
-  background-color: lightseagreen;
+  top: 125px;
+  right: 25px;
 }
 
-.save-button:hover,
-.update-button:hover,
-.delete-button:hover {
+button:hover {
   background-color: green;
   color: white;
 }
@@ -99,9 +106,4 @@ body {
 
 input {
   outline: none;
-}
-
-button {
-  outline: none;
-  font-size: 1rem;
 }

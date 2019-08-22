@@ -57,13 +57,34 @@ const MovieForm = props => {
       });
   };
 
+  const addMovie = e => {
+    e.preventDefault();
+    let add = {
+      ...movie,
+      metascore: Number(movie.metascore),
+      stars: [movie.stars]
+    };
+    console.log(movie);
+    axios
+      .post(`http://localhost:5000/api/movies`, add)
+      .then(res => {
+        console.log(res.data);
+      })
+      .catch(err => {
+        console.log(err.response);
+      });
+  };
+  const submit = e => {
+    props.location.pathname === "/add-movie" ? addMovie(e) : updateMovie(e);
+  };
+
   return (
     <div>
       <form onSubmit={updateMovie}>
         <input
           type="text"
           placeholder="Title"
-          name="name"
+          name="title"
           onChange={handleChange}
           value={movie.title}
         />
@@ -88,7 +109,7 @@ const MovieForm = props => {
           onChange={handleChange}
           value={movie.stars}
         />
-        <button onClick={updateMovie}>Submit</button>
+        <button onClick={submit}>Submit</button>
       </form>
     </div>
   );

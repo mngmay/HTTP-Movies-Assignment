@@ -14,7 +14,9 @@ const App = () => {
 
   return (
     <>
-      <NavLink to="/add-movie">Add Movie</NavLink>
+      <NavLink to="/add-movie" className="add-movie-btn">
+        Add Movie
+      </NavLink>
       <SavedList list={savedList} />
       <Route exact path="/" component={MovieList} />
       <Route
