@@ -74,7 +74,7 @@ body {
 .delete-button {
   position: absolute;
   top: 25px;
-  right: 175px;
+  right: 195px;
   border: 1px solid grey;
   padding: 5px 10px;
   background-color: lightseagreen;
@@ -95,4 +95,13 @@ body {
 .movie-warning {
   color: red;
   text-align: center;
+}
+
+input {
+  outline: none;
+}
+
+button {
+  outline: none;
+  font-size: 1rem;
 }

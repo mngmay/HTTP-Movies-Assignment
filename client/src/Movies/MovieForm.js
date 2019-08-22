@@ -12,6 +12,7 @@ const initialMovie = {
 const MovieForm = props => {
   const [movie, setMovie] = useState(initialMovie);
   console.log("movie state", movie);
+  console.log(props.location.pathname);
 
   useEffect(() => {
     axios
