@@ -55,10 +55,13 @@ const MovieForm = props => {
 
   const addMovie = e => {
     e.preventDefault();
+    let starArr = movie.stars.split(",");
+    starArr = starArr.map(star => star.trim());
+    console.log(starArr);
     let add = {
       ...movie,
       metascore: Number(movie.metascore),
-      stars: [movie.stars]
+      stars: starArr
     };
     console.log(movie);
     axios
