@@ -35,10 +35,14 @@ const MovieForm = props => {
 
   const updateMovie = e => {
     e.preventDefault();
+    console.log(movie.stars);
+    let starArr = movie.stars.split(",");
+    starArr = starArr.map(star => star.trim());
+    console.log(starArr);
     let update = {
       ...movie,
       metascore: Number(movie.metascore),
-      stars: [movie.stars]
+      stars: starArr
     };
     axios
       .put(`http://localhost:5000/api/movies/${props.match.params.id}`, update)
