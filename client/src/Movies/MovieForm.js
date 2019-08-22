@@ -11,8 +11,6 @@ const initialMovie = {
 
 const MovieForm = props => {
   const [movie, setMovie] = useState(initialMovie);
-  console.log("movie state", movie);
-  console.log(props.location.pathname);
 
   useEffect(() => {
     axios
@@ -34,8 +32,6 @@ const MovieForm = props => {
   const handleChange = e => {
     setMovie({ ...movie, [e.target.name]: e.target.value });
   };
-
-  console.log(movie);
 
   const updateMovie = e => {
     e.preventDefault();
@@ -69,18 +65,21 @@ const MovieForm = props => {
       .post(`http://localhost:5000/api/movies`, add)
       .then(res => {
         console.log(res.data);
+        setMovie(initialMovie);
+        props.history.push("/");
       })
       .catch(err => {
         console.log(err.response);
       });
   };
+
   const submit = e => {
     props.location.pathname === "/add-movie" ? addMovie(e) : updateMovie(e);
   };
 
   return (
     <div>
-      <form onSubmit={updateMovie}>
+      <form onSubmit={submit}>
         <input
           type="text"
           placeholder="Title"
@@ -109,7 +108,7 @@ const MovieForm = props => {
           onChange={handleChange}
           value={movie.stars}
         />
-        <button onClick={submit}>Submit</button>
+        <button>Submit</button>
       </form>
     </div>
   );
