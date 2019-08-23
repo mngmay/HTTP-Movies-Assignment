@@ -13,22 +13,21 @@ const App = () => {
     setSavedList([...savedList, movie]);
   };
 
-  //use effect, forEach saved list, match ids,
-  const movies = axios.get("http://localhost:5000/api/movies");
-  useEffect(() => {
-    axios.get("http://localhost:5000/api/movies").then(res => {
-      res.data.forEach(movie => {
-        savedList.forEach(sMovie => {
-          if (movie.id === sMovie.id) {
-            const newSavedList = savedList.filter(
-              savedMovie => savedMovie !== sMovie
-            );
-            setSavedList([...newSavedList, movie]);
-          }
-        });
-      });
-    });
-  }, [movies]);
+  // const movies = axios.get("http://localhost:5000/api/movies");
+  // useEffect(() => {
+  //   axios.get("http://localhost:5000/api/movies").then(res => {
+  //     res.data.forEach(movie => {
+  //       savedList.forEach(sMovie => {
+  //         if (movie.id === sMovie.id) {
+  //           const newSavedList = savedList.filter(
+  //             savedMovie => savedMovie !== sMovie
+  //           );
+  //           setSavedList([...newSavedList, movie]);
+  //         }
+  //       });
+  //     });
+  //   });
+  // }, [movies]);
 
   return (
     <>
